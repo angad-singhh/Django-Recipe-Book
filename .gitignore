@@ -1,0 +1,6 @@
+public/
+db.sqlite3
+__pycache__
+home/__pycache__
+home/migrations/
+venv

@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %} View Recipes Page {% endblock title %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+
+            <div class="col-lg-6 col-md-8">
+                <form>
+                    <div class="input-group mb-3 ">
+                        <input type="text" name="search_term" class="form-control border border-4" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2" >
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+                    </div>
+                </form>
+            </div>
+    
+    <table class="table table-bordered table-striped border border-4">
+        <thead class="thead-dark border border-4">
+            <tr>
+                <th scope="col"  class="border border-4">S.No</th>
+                <th scope="col" class="border border-4">Title</th>
+                <th scope="col" class="border border-4">Description</th>
+                <th scope="col" class="border border-4">Image</th>
+                <th scope="col" class="border border-4">Option</th>
+            </tr>
+        </thead>
+        <tbody class="border border-4">
+            {% for recipe in Recipes %}
+            <tr class="border border-4">
+                <td scope="row" class="border border-4">{{ forloop.counter }}</td>
+                <td class="border border-4">{{ recipe.title }}</td>
+                <td class="border border-4">{{ recipe.description }}</td>
+                <td class="border border-4"><img src="/media/{{ recipe.image }}" alt="Recipe_Image" style="width: 100px;"></td> 
+                <td class="border border-4"><a class="btn btn-danger" href="/delete-recipe/{{recipe.id}}">Delete</a>
+                    <a class="btn btn-primary mt-4" href="/update-recipe/{{recipe.id}}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

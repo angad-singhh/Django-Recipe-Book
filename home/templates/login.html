@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5 p-4 border border-3 shadow-lg rounded w-50">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4 class="fs-3 "> Login</h4>
+    <hr>
+    {% if messages %}
+        {% for message in messages %} 
+            <div class="alert {% if message.tags == 'info' %}alert-warning{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }} </div> 
+        {% endfor %}
+    {% endif %}
+    <div class="mb-3">
+      <label class="form-label fw-medium">Username</label>
+      <input name="username" required type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label fw-medium">Password</label>
+      <input type="password" name ="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    
+    <p>Don't have account with us, <a href="/register/">Register</a></p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

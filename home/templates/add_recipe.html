@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Add Recipe Page {% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5 p-4 border shadow-lg rounded w-50">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4 class="fs-3 "> Add Recipe</h4>
+        <hr>
+        <div class="mb-3">
+            <label for="title" class="form-label fw-bold">Title</label>
+            <input type="text" name="title" required class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label fw-bold">Description</label>
+            <textarea class="form-control" name="description" required id="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label fw-bold">Image</label>
+            <input type="file" name="image" class="form-control" id="image">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+<br><br><br>
+
+{% endblock %}

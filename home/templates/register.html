@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock title %}
+
+{% block body %}
+
+
+<div class="container mt-5 p-4 border border-3 shadow-lg rounded w-50">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4 class="fs-3 "> Register</h4>
+    <hr>
+    {% if messages %}
+        {% for message in messages %} 
+            <div class="alert {% if message.tags == 'info' %}alert-warning{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }} </div> 
+        {% endfor %}
+    {% endif %}
+    <div class="mb-3">
+        <label class="form-label fw-medium">First Name</label>
+        <input name="first_name" required type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-medium">Last Name</label>
+        <input name="last_name" type="text" class="form-control">
+      </div>
+    <div class="mb-3">
+      <label class="form-label fw-medium">Username</label>
+      <input name="username" required type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label fw-medium">Password</label>
+      <input type="password" name="password" required ="form-control" id="exampleInputPassword1">
+    </div>
+    
+    <p>Already have account with us, <a href="/login/">Login</a></p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
